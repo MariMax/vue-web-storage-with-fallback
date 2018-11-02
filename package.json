@@ -1,6 +1,6 @@
 {
   "name": "vue-web-storage-with-fallback",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Web storage with fallback to object storage for Vue",
   "main": "dist/vue-web-storage-with-fallback.js",
   "module": "dist/vue-web-storage-with-fallback.esm.js",
