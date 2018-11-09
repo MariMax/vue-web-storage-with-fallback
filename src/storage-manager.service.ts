@@ -48,13 +48,16 @@ export class WebStorageManagerService implements IStorageService {
     storageType = StorageServicesEnum.LOCAL_STORAGE,
   ): void {
     const storage = this.getWorkingStorage(storageType);
-    storage.setItem(this.getKey(key), JSON.stringify(value));
+    if (typeof value !== 'string') {
+      value = JSON.stringify(value);
+    }
+    storage.setItem(this.getKey(key), value);
   }
 
   public getItem(
     key: string,
     storageType = StorageServicesEnum.LOCAL_STORAGE,
-  ): any {
+  ): string | null {
     const storage = this.getWorkingStorage(storageType);
     return storage.getItem(this.getKey(key));
   }

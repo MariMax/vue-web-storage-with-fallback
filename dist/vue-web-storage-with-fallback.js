@@ -213,7 +213,10 @@
         WebStorageManagerService.prototype.setItem = function (key, value, storageType) {
             if (storageType === void 0) { storageType = exports.StorageServicesEnum.LOCAL_STORAGE; }
             var storage = this.getWorkingStorage(storageType);
-            storage.setItem(this.getKey(key), JSON.stringify(value));
+            if (typeof value !== 'string') {
+                value = JSON.stringify(value);
+            }
+            storage.setItem(this.getKey(key), value);
         };
         WebStorageManagerService.prototype.getItem = function (key, storageType) {
             if (storageType === void 0) { storageType = exports.StorageServicesEnum.LOCAL_STORAGE; }
